@@ -9,6 +9,7 @@ Photo gallery
 
 
 ## Instructions
-1. Fix the error
-2. Share your solution on your repository's [github page](https://pages.github.com/)
+1. Find the errors
+2. Fix the error
+3. Share your solution on your repository's [github page](https://pages.github.com/)
 4. Raise a PR with the fix.
