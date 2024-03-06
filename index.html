@@ -4,8 +4,39 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Photo gallery</title>
+	<div id="container">
+		<div id="poster">
+			<img src="" alt="image" id="img">
+		</div>	
+	</div>
 </head>
 <body>
+<script type="text/javascript">
+
+	window.onload = async function loadImage() {
+		console.log("load image");
+
+		let image_url = 'https://picsum.photos/id/24/500/250';
+		image_url = 'https://placehold.co/600x400';
+
+		createHeading('Hello');
+		//createImage(image_url);
+	}
+
+	function createImage(url){
+		let img = document.getElementById('img');
+		img.src = url;
+	}
+
+	function createHeading(t){
+		let heading = document.createElement('h1');
+		let text = document.createTextNode(t);
+		heading.appendChild(text);
+
+		document.body.appendChild(heading);
+	}
+
+</script>
 
 </body>
 </html>
