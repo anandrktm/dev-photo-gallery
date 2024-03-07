@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Photo gallery</title>
+	<body>
 	<div id="container">
 		<h1>Select image:</h1>
 		<select onchange="changeImage(this)">
@@ -17,12 +18,12 @@
 		</div>	
 	</div>
 </head>
-<body>
+
 <script type="text/javascript">
 
 	const img_book = 'https://picsum.photos/id/24/500/250';
 	const img_layout = 'https://placehold.co/600x400';
-	const img_bird = 'https://picsum.photos/id/244/500/250;';
+	const img_bird = 'https://picsum.photos/id/244/500/250';
 
 	const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
 
@@ -30,7 +31,7 @@
 	window.onload = async function loadImage() {
 		console.log("load image");
 
-		let current_quote = quote[Math.floor(Math.random()*4)];
+		let current_quote = quote[Math.floor(Math.random()*quote.length)];
 		console.log(current_quote);
 		createHeading(current_quote);
 		updateImage(img_layout);
@@ -40,6 +41,7 @@
 
 		console.log("change image", option.value);
 		
+		let image_url;
 		if(option.value == 'book'){
 			image_url = img_book;
 		}else if(option.value=='layout'){
@@ -59,11 +61,16 @@
 	}
 
 	function createHeading(t){
-		let heading = document.createElement('p');
-		let text = document.createTextNode(t);
-		heading.appendChild(text);
-
-		document.body.appendChild(heading);
+            let heading = document.getElementById('quote');
+            if (heading) {
+                heading.innerText = t;
+            } else {
+                heading = document.createElement('p');
+                heading.id = 'quote';
+                let text = document.createTextNode(t);
+                heading.appendChild(text);
+                document.body.appendChild(heading);
+            }
 	}
 
 </script>
