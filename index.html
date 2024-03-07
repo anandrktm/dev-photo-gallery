@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Photo gallery</title>
-	<div id="container">
-		<h1>Select image:</h1>
-		<select onchange="changeImage(this)">
-			<option value='book'>Book</option>
-			<option value='layout'>Layout</option>
-			<option value='bird'>Bird</option>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Photo gallery</title>
+  </head>
+  <!-- The <div> with id="container" should be inside the <body> tag, not the <head> tag. Moved it accordingly. -->
+  <body>
+    <div id="container">
+      <h1>Select image:</h1>
+      <select onchange="changeImage(this)">
+        <option value="book">Book</option>
+        <option value="layout">Layout</option>
+        <option value="bird">Bird</option>
+      </select>
+      <div id="poster">
+        <img src="" alt="image" id="img" />
+      </div>
+    </div>
 
-		</select>
-		<div id="poster">
-			<img src="" alt="image" id="img">
-		</div>	
-	</div>
-</head>
-<body>
-<script type="text/javascript">
+    <script type="text/javascript">
+      // Updated image URLs for 600x400 layout, ensuring uniform dimensions for book, layout, and bird options in the photo gallery.
+      const img_book = "https://picsum.photos/id/24/600/400";
+      const img_layout = "https://placehold.co/600x400";
+      const img_bird = "https://picsum.photos/id/244/600/400"; // Removed semicolon from the end .
 
-	const img_book = 'https://picsum.photos/id/24/500/250';
-	const img_layout = 'https://placehold.co/600x400';
-	const img_bird = 'https://picsum.photos/id/244/500/250;';
+      const quote = [
+        "Strength grows in the moments when you think you can't go on but you keep going anyway.",
+        "Embrace the struggle, for within it lies the path to your strength and resilience.",
+        "Turn obstacles into opportunities and challenges into triumphs.",
+        "In the face of challenge, find your strength; in adversity, discover your resilience.",
+        "Every challenge is a chance to rewrite your story with resilience and determination.",
+      ];
 
-	const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
-
-
-	window.onload = async function loadImage() {
-		console.log("load image");
-
-		let current_quote = quote[Math.floor(Math.random()*4)];
-		console.log(current_quote);
-		createHeading(current_quote);
-		updateImage(img_layout);
-	}
-
-	function changeImage(option){
-
-		console.log("change image", option.value);
+      window.onload = function loadImage() {  //the async keyword is not necessary in this context. The window.onload event handler is not using any asynchronous operations that require the async keyword.
 		
-		if(option.value == 'book'){
-			image_url = img_book;
-		}else if(option.value=='layout'){
-			image_url = img_layout;
-		}else{
-			image_url = img_bird;
-		}
+        console.log("load image");
 
-		console.log("Update image: ", image_url);
-		updateImage(image_url);
+        let current_quote = quote[Math.floor(Math.random() * quote.length)];  //used quote[Math.floor(Math.random() * 4)] to access a random quote, but since the quote array has five elements, we should use quote[Math.floor(Math.random() * quote.length)] to make it dynamic and work with any number of quotes.
 
-	}
+        console.log(current_quote);
+        createHeading(current_quote);
+        updateImage(img_book);  //Replaced the img_layout to img_book because the dropdown selected for that was book and the image that was loading was layout image .
+      };
 
-	function updateImage(url){
-		let img = document.getElementById('img');
-		img.src = url;
-	}
+      function changeImage(option) {
+        console.log("change image", option.value);
 
-	function createHeading(t){
-		let heading = document.createElement('p');
-		let text = document.createTextNode(t);
-		heading.appendChild(text);
+        let image_url;
 
-		document.body.appendChild(heading);
-	}
+        if (option.value == "book") {
+          image_url = img_book;
+        } else if (option.value == "layout") {
+          image_url = img_layout;
+        } else {
+          image_url = img_bird;
+        }
 
-</script>
+        console.log("Update image: ", image_url);
+        updateImage(image_url);
+      }
 
-</body>
+      function updateImage(url) {
+        let img = document.getElementById("img");
+        img.src = url;
+      }
+
+      function createHeading(t) {
+        let heading = document.createElement("p");
+        let text = document.createTextNode(t);
+        heading.appendChild(text);
+
+        document.body.appendChild(heading);
+      }
+    </script>
+  </body>
 </html>
