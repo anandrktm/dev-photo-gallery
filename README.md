@@ -16,11 +16,11 @@ Photo gallery
 5. Raise a PR with the fix.
 
 
-Fixed Error
+Fixed Error:
 
 Thank you for giving me this opportunity. I gave my 100% effort in this assessment and fixed all the errors that I understood. I am also curious to know my mistakes because I want to improve upon them.
 
-1.The <div id="container"> element and its contents are placed within the <body> section, where visible content should be located. The JavaScript code is placed at the end of the <body> section to ensure that all HTML elements are loaded before the script is executed.
+1.The div container element and its contents are placed within the body section, where visible content should be located. The JavaScript code is placed at the end of the body section to ensure that all HTML elements are loaded before the script is executed.
 
 2.I fixed a syntax error where you mistakenly put a semicolon in the image link. Semicolons are not required in URLs.
 
