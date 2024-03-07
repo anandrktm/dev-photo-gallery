@@ -16,7 +16,7 @@ Photo gallery
 
 
 <!-- Errors found and Fixed -->
-1. The <div> with id="container" should be inside the <body> tag, not the <head> tag. Moved it accordingly.
+1. The div with id="container" should be inside the body tag, not the head tag. Moved it accordingly.
 
 2. There's a semicolon at the end of img_bird URL in the JavaScript code. Removed it to have a valid URL
 
