@@ -15,7 +15,8 @@ Photo gallery
 4. Share your solution on your repository's [github page](https://pages.github.com/)
 5. Raise a PR with the fix.
 
-<!-- ERRORS FOUND -->
+
+Fixed Error
 
 Thank you for giving me this opportunity. I gave my 100% effort in this assessment and fixed all the errors that I understood. I am also curious to know my mistakes because I want to improve upon them.
 
