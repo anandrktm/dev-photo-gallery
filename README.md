@@ -16,7 +16,7 @@ Photo gallery
 5. Raise a PR with the fix.
 
 
-Fixed Error:
+## Fixed Error: 
 
 Thank you for giving me this opportunity. I gave my 100% effort in this assessment and fixed all the errors that I understood. I am also curious to know my mistakes because I want to improve upon them.
 
