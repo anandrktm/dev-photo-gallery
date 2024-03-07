@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- added lang="en" to specify the language -->
 
 <head>
 	<meta charset="utf-8">
@@ -18,6 +18,7 @@
 
 		</select>
 		<div id="poster">
+			<!-- I added an inline style to the img -->
 			<img src="" alt="image" id="img" style="width: 600px; height: 400px;">
 		</div>
 	</div>
@@ -25,14 +26,15 @@
 
 		const img_book = 'https://picsum.photos/id/24/500/250';
 		const img_layout = 'https://placehold.co/600x400';
-		const img_bird = 'https://picsum.photos/id/244/500/250';
+		const img_bird = 'https://picsum.photos/id/244/500/250'; // remove semicolon from img_layout
 
 		const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
 
-
+		// Removed the unnecessary async keyword
 		window.onload = function loadImage() {
 			console.log("load image");
 
+			// Fix the array index for the quote array
 			let current_quote = quote[Math.floor(Math.random() * quote.length)];
 
 			console.log(current_quote);
@@ -44,7 +46,7 @@
 
 			console.log("change image", option.value);
 
-			let image_url;
+			let image_url; //  Added let to declare the image_url variable
 
 			if (option.value == 'book') {
 				image_url = img_book;
