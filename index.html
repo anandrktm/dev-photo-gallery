@@ -1,72 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Photo gallery</title>
-	<div id="container">
-		<h1>Select image:</h1>
-		<select onchange="changeImage(this)">
-			<option value='book'>Book</option>
-			<option value='layout'>Layout</option>
-			<option value='bird'>Bird</option>
-
-		</select>
-		<div id="poster">
-			<img src="" alt="image" id="img">
-		</div>	
-	</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo gallery</title>
 </head>
 <body>
-<script type="text/javascript">
+    <div id="container">
+        <h1>Select image:</h1>
+        <select onchange="changeImage(this)">
+            <option value='book'>Book</option>
+            <option value='layout'>Layout</option>
+            <option value='bird'>Bird</option>
+        </select>
+        <div id="poster">
+            <img src="" alt="image" id="img">
+        </div> 
+    </div>
 
-	const img_book = 'https://picsum.photos/id/24/500/250';
-	const img_layout = 'https://placehold.co/600x400';
-	const img_bird = 'https://picsum.photos/id/244/500/250;';
+    <script type="text/javascript">
+        const img_book = 'https://picsum.photos/id/24/500/250';
+        const img_layout = 'https://placehold.co/600x400';
+        const img_bird = 'https://picsum.photos/id/244/500/250';
 
-	const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
+        const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
 
+        window.onload = async function loadImage() {
+            console.log("load image");
 
-	window.onload = async function loadImage() {
-		console.log("load image");
+            let current_quote = quote[Math.floor(Math.random()*quote.length)];
+            console.log(current_quote);
+            createHeading(current_quote);
+            updateImage(img_layout);
+        }
 
-		let current_quote = quote[Math.floor(Math.random()*4)];
-		console.log(current_quote);
-		createHeading(current_quote);
-		updateImage(img_layout);
-	}
+        function changeImage(option){
+            console.log("change image", option.value);
+            
+            let image_url;
+            if(option.value == 'book'){
+                image_url = img_book;
+            } else if(option.value == 'layout'){
+                image_url = img_layout;
+            } else {
+                image_url = img_bird;
+            }
 
-	function changeImage(option){
+            console.log("Update image: ", image_url);
+            updateImage(image_url);
+        }
 
-		console.log("change image", option.value);
-		
-		if(option.value == 'book'){
-			image_url = img_book;
-		}else if(option.value=='layout'){
-			image_url = img_layout;
-		}else{
-			image_url = img_bird;
-		}
+        function updateImage(url){
+            let img = document.getElementById('img');
+            img.src = url;
+        }
 
-		console.log("Update image: ", image_url);
-		updateImage(image_url);
+        function createHeading(t){
+            let heading = document.createElement('p');
+            let text = document.createTextNode(t);
+            heading.appendChild(text);
 
-	}
-
-	function updateImage(url){
-		let img = document.getElementById('img');
-		img.src = url;
-	}
-
-	function createHeading(t){
-		let heading = document.createElement('p');
-		let text = document.createTextNode(t);
-		heading.appendChild(text);
-
-		document.body.appendChild(heading);
-	}
-
-</script>
-
+            document.body.appendChild(heading);
+        }
+    </script>
 </body>
 </html>
