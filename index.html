@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"> <!-- added lang="en" to specify the language -->
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Photo gallery</title>
+
+</head>
+
+<body>
 	<div id="container">
 		<h1>Select image:</h1>
 		<select onchange="changeImage(this)">
@@ -13,60 +18,64 @@
 
 		</select>
 		<div id="poster">
-			<img src="" alt="image" id="img">
-		</div>	
+			<!-- I added an inline style to the img -->
+			<img src="" alt="image" id="img" style="width: 600px; height: 400px;">
+		</div>
 	</div>
-</head>
-<body>
-<script type="text/javascript">
+	<script type="text/javascript">
 
-	const img_book = 'https://picsum.photos/id/24/500/250';
-	const img_layout = 'https://placehold.co/600x400';
-	const img_bird = 'https://picsum.photos/id/244/500/250;';
+		const img_book = 'https://picsum.photos/id/24/500/250';
+		const img_layout = 'https://placehold.co/600x400';
+		const img_bird = 'https://picsum.photos/id/244/500/250'; // remove semicolon from img_layout
 
-	const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
+		const quote = ["Strength grows in the moments when you think you can't go on but you keep going anyway.", "Embrace the struggle, for within it lies the path to your strength and resilience.", "Turn obstacles into opportunities and challenges into triumphs.", "In the face of challenge, find your strength; in adversity, discover your resilience.", "Every challenge is a chance to rewrite your story with resilience and determination."]
 
+		// Removed the unnecessary async keyword
+		window.onload = function loadImage() {
+			console.log("load image");
 
-	window.onload = async function loadImage() {
-		console.log("load image");
+			// Fix the array index for the quote array
+			let current_quote = quote[Math.floor(Math.random() * quote.length)];
 
-		let current_quote = quote[Math.floor(Math.random()*4)];
-		console.log(current_quote);
-		createHeading(current_quote);
-		updateImage(img_layout);
-	}
-
-	function changeImage(option){
-
-		console.log("change image", option.value);
-		
-		if(option.value == 'book'){
-			image_url = img_book;
-		}else if(option.value=='layout'){
-			image_url = img_layout;
-		}else{
-			image_url = img_bird;
+			console.log(current_quote);
+			createHeading(current_quote);
+			updateImage(img_layout);
 		}
 
-		console.log("Update image: ", image_url);
-		updateImage(image_url);
+		function changeImage(option) {
 
-	}
+			console.log("change image", option.value);
 
-	function updateImage(url){
-		let img = document.getElementById('img');
-		img.src = url;
-	}
+			let image_url; //  Added let to declare the image_url variable
 
-	function createHeading(t){
-		let heading = document.createElement('p');
-		let text = document.createTextNode(t);
-		heading.appendChild(text);
+			if (option.value == 'book') {
+				image_url = img_book;
+			} else if (option.value == 'layout') {
+				image_url = img_layout;
+			} else {
+				image_url = img_bird;
+			}
 
-		document.body.appendChild(heading);
-	}
+			console.log("Update image: ", image_url);
+			updateImage(image_url);
 
-</script>
+		}
+
+		function updateImage(url) {
+			let img = document.getElementById('img');
+			img.src = url;
+		}
+
+		function createHeading(t) {
+			let heading = document.createElement('p');
+			let text = document.createTextNode(t);
+			heading.appendChild(text);
+
+			document.body.appendChild(heading);
+		}
+
+	</script>
 
 </body>
+
 </html>
