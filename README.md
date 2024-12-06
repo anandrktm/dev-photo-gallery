@@ -1,5 +1,6 @@
 # dev-photo-gallery
 Photo gallery
+![Visualization of the codebase](./diagram.svg)
 
 ## Expected output
 ![expected output](expected-output.png "Open book")
